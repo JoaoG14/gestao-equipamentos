@@ -4,6 +4,12 @@ namespace GestaoDeEquipamentos.ConsoleApp
     {
         public Equipamento[] equipamentos = new Equipamento[100];
         public int contadorEquipamentos = 0;
+        private TelaFabricante telaFabricante;
+
+        public void SetTelaFabricante(TelaFabricante telaFabricante)
+        {
+            this.telaFabricante = telaFabricante;
+        }
 
         public string ApresentarMenu()
         {
@@ -41,8 +47,15 @@ namespace GestaoDeEquipamentos.ConsoleApp
             Console.Write("Digite o nome do equipamento: ");
             string nome = Console.ReadLine();
 
+            Console.WriteLine();
+            Console.WriteLine("Fabricantes Disponíveis:");
+            telaFabricante.VisualizarFabricantes(false);
+            Console.WriteLine();
+
+            string fabricante;
+            
             Console.Write("Digite o nome do fabricante equipamento: ");
-            string fabricante = Console.ReadLine();
+            fabricante = Console.ReadLine();
 
             Console.Write("Digite o preço de aquisição R$ ");
             decimal precoAquisicao = Convert.ToDecimal(Console.ReadLine());
@@ -76,8 +89,15 @@ namespace GestaoDeEquipamentos.ConsoleApp
             Console.Write("Digite o nome do equipamento: ");
             string nome = Console.ReadLine();
 
+            Console.WriteLine();
+            Console.WriteLine("Fabricantes Disponíveis:");
+            telaFabricante.VisualizarFabricantes(false);
+            Console.WriteLine();
+
+            string fabricante;
+            
             Console.Write("Digite o nome do fabricante equipamento: ");
-            string fabricante = Console.ReadLine();
+            fabricante = Console.ReadLine();
 
             Console.Write("Digite o preço de aquisição R$ ");
             decimal precoAquisicao = Convert.ToDecimal(Console.ReadLine());

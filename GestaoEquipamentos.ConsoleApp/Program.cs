@@ -5,7 +5,10 @@
         static void Main(string[] args)
         {
             TelaEquipamento telaEquipamento = new TelaEquipamento();
+            TelaFabricante telaFabricante = new TelaFabricante(telaEquipamento);
             TelaChamado telaChamado = new TelaChamado(telaEquipamento);
+            
+            telaEquipamento.SetTelaFabricante(telaFabricante);
 
             while (true)
             {
@@ -15,6 +18,7 @@
                 Console.WriteLine("--------------------------------------------");
                 Console.WriteLine("Digite 1 para gerenciar equipamentos");
                 Console.WriteLine("Digite 2 para gerenciar chamados");
+                Console.WriteLine("Digite 3 para gerenciar fabricantes");
                 Console.WriteLine("Digite S para sair");
                 Console.WriteLine("--------------------------------------------");
 
@@ -33,6 +37,10 @@
                 else if (opcaoPrincipal == "2")
                 {
                     GerenciarChamados(telaChamado);
+                }
+                else if (opcaoPrincipal == "3")
+                {
+                    GerenciarFabricantes(telaFabricante);
                 }
             }
         }
@@ -101,6 +109,39 @@
                 Console.ReadLine();
 
             } while (opcaoChamado != "5");
+        }
+
+        private static void GerenciarFabricantes(TelaFabricante telaFabricante)
+        {
+            string opcaoFabricante;
+            do
+            {
+                opcaoFabricante = telaFabricante.ApresentarMenu();
+
+                switch (opcaoFabricante)
+                {
+                    case "1":
+                        telaFabricante.CadastrarFabricante();
+                        break;
+
+                    case "2":
+                        telaFabricante.EditarFabricante();
+                        break;
+
+                    case "3":
+                        telaFabricante.ExcluirFabricante();
+                        break;
+
+                    case "4":
+                        telaFabricante.VisualizarFabricantes(true);
+                        break;
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Pressione enter para continuar...");
+                Console.ReadLine();
+
+            } while (opcaoFabricante != "5");
         }
     }
 }
